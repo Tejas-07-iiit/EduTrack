@@ -1,0 +1,160 @@
+body {
+  background-color: #8ec9976e;
+}
+.page {
+  /* min-height: 100vh;       */
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+}
+
+
+.alert {
+  padding: 14px 18px;
+  border-radius: 1px;
+  font-size: 15px;
+  font-weight: 500;
+  margin: 1px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.alert-warning {
+  background: #fbf0e3;
+  color: #96400b;
+  border-left: 4px solid #f59f0b98;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.register {
+  margin-top: 26px;
+  /* height: 30vh; */
+  width: 35vw;
+  padding: 30px;
+  /* width: auto; */
+  text-align: left;
+  border: 2px solid black;
+  border-radius: 12px;
+   background: linear-gradient(
+    130deg,
+    #8fc1919b 50%,
+    #65bf6b49 50%
+  );
+  box-shadow: 0 0 50px rgb(94, 203, 150);
+}
+
+@media (max-width:1024px) {
+  .register {
+    width: 90%;
+  }
+}
+
+.form-item {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.form-item input {
+  height: 26px;
+  border: 0px ;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.582);
+}
+
+.form-item input:hover {
+ border:2px solid rgb(118, 173, 137)
+}
+
+.form-item input:focus{
+  outline: none;
+  box-shadow: 0 0 8px rgb(124, 201, 184);
+  border-color: #87d5a9;
+}
+
+.form-item label {
+  font-size: 20px;
+}
+
+.btn1 {
+  display: block;
+  margin: auto;
+  height: 40px;
+  width: 100px;
+  position: relative;
+  font-size: 16px;
+  color: #f2f2f2;
+  background: #121212;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.btn1::before {
+  content: "";
+  position: absolute;
+  inset: -1px;  
+  background: linear-gradient(
+    90deg,
+    #0bf503,
+    #ffffff,
+    #05fb11,
+    #ffffff,
+    #11ff00
+  );
+  background-size: 300% 300%;
+  border-radius: 16px;
+  z-index: -1;
+  opacity: 1;
+  animation: aiGlow 6s linear infinite;
+}
+
+.btn1::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  background: #121212;
+  border-radius: 12px;
+  z-index: -1;
+}
+
+.btn1:hover {
+  transform: translateY(-1px) scale(1.0);
+}
+
+.btn1:active {
+  transform: scale(0.96);
+  box-shadow: 0 4px 10px rgba(0, 255, 30, 0.41);
+}
+
+@keyframes aiGlow {
+  0% { background-position: 0% 100%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; } 
+}
+
+.text {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.go_login {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+}
+
+.go_signup {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+}
