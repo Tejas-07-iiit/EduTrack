@@ -2,10 +2,10 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "./routes/Server.js",
+  "main": "./Server",
   "scripts": {
-    "start": "node ./routes/Server.js",
-    "dev": "nodemon ./routes/Server.js"
+    "start": "node ./Server",
+    "dev": "nodemon ./Server"
   },
   "keywords": [],
   "author": "",

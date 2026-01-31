@@ -12,6 +12,7 @@ function App() {
 
     const auth = useSelector((state)=>state.auth.isAuth)
     const initial = 0;
+    
     useEffect(()=>{
       // check tocken
       const Refresh = async () => {
@@ -27,10 +28,7 @@ function App() {
           }
         }
         catch (error) {
-          // if(initial !== 0){
             console.log(error.message)
-          // } 
-          // initial += 1;
         }
       }      
       Refresh();

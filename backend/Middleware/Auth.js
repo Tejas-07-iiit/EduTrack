@@ -1,14 +1,15 @@
 const jwt = require("jsonwebtoken");
 
 const Auth = (req,res,next) => {
-    const accesstoken = req.cookies.data;
+    
+    const accesstoken = req.cookies.token;
     console.log(accesstoken)
     if(!accesstoken) {
-        return res.send("Unautharized").status(401);
+        return res.status(401).send("Unautharized");
     }
 
     try {
-        const dc = jwt.verify(accesstoken , "hi i am tejas")
+        const dc = jwt.verify(accesstoken , process.env.JWT_SECRET)
         req.user = dc;
         next();
     } catch (error) {
@@ -16,4 +17,4 @@ const Auth = (req,res,next) => {
     }
 }
 
-export default Auth;
+module.exports = Auth;

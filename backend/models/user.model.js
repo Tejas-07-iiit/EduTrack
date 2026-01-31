@@ -1,25 +1,25 @@
-const {Schema, default: mongoose} = require("mongoose")
+const {Schema, default: mongoose } = require("mongoose")
 
 const User = new Schema({
 
     f_name : {
-        type : "string",
+        type : String,
         required :true
     },
 
     l_name : {
-        type :"string",
+        type :String,
         required : true
     },
 
     email : {
-        type : "string",
+        type : String,
         unique : true,
         required : true
     },
 
     password : {
-        type :"string",
+        type :String,
         required : true
     }
 
