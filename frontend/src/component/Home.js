@@ -1,7 +1,22 @@
 const Home = () => {
   return (
     <>
-      <div className="mx-5" style={{textAlign:"center" , fontSize :"30px"}}>Hi this is the upcoming 75</div>
+      <div className="navbar">
+          <div className="heading">
+            EduTrack
+          </div>
+          <div className="menu">
+              <div className="item">
+                <a href="/">Home</a>
+              </div>
+              <div className="item">
+                <a href="/">About</a>
+              </div>
+              <div className="item">
+                <a href="/">Contact</a>
+              </div>
+          </div>
+      </div>
     </>
   )
 }

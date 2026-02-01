@@ -34,6 +34,8 @@ app.use("/api/" , require("./routes/AddSubject"))
 // For Update Attendance 
 app.use("/api/",  require("./routes/Attendance"))
 
+// For Fetching All Subjects
+app.use("/api/",require("./routes/Allsubject"))
 
 app.listen(process.env.PORT , ()=> {
   console.log("Your Server is running on port  : " , process.env.PORT)
