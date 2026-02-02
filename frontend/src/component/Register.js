@@ -65,7 +65,7 @@ const Register = () => {
                         <hr></hr>
                         
                         <form id="regform" onSubmit={saveuser}>
-                            {alert && <Alert message={"All fields are required."}/>}
+                            {alert && <Alert message={"All fields are required"}/>}
                             <div className="form-item Name">
                                 <label className="text">First Name</label>
                                 <input onChange={(e)=>{setfname(e.target.value)}} type="fname"/>

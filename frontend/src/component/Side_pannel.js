@@ -1,9 +1,8 @@
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import  {comp}  from "../Redux_store/Comp"
 
 const Side_pannel = () => {
     const dispatch = useDispatch()
-    const component  = useSelector((state)=>state.comp.comp)
 
     const subject = (e) => {
         e.preventDefault()
