@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import  {login}  from "./Redux_store/Auth";
 import Side_pannel from './component/Side_pannel';
 import Subject from './component/Subject';
+import Attendance from './component/Attendance';
 
 function App() {
     const dispatch = useDispatch();
@@ -41,11 +42,10 @@ function App() {
       <>
         {auth ?  <Home/> : <Register/>}
         <div className="mainbody">
-        {auth && 
-          <Side_pannel/> }
-        {auth &&   
-          <Subject/>
-        }
+         {auth && 
+            <Side_pannel/> }
+          {auth && <Subject/> }
+          {auth && <Attendance/>}
         </div>
       </>
   );

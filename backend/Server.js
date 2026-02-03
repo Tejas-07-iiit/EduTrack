@@ -40,6 +40,9 @@ app.use("/api/",require("./routes/Allsubject"))
 // Delete Subject 
 app.use("/api/" , require("./routes/DeleteSubejct"))
 
+// For Fetching All Attendance
+app.use("/api/" , require("./routes/Allattendance"))
+
 app.listen(5000,"0.0.0.0" , ()=> {
   console.log("Your Server is running on port  : " , process.env.PORT)
 })

@@ -35,19 +35,16 @@ body {
 
 .register {
   margin-top: 26px;
-  /* height: 30vh; */
   width: 35vw;
   padding: 30px;
-  /* width: auto; */
   text-align: left;
   border: 2px solid black;
   border-radius: 12px;
    background: linear-gradient(
     130deg,
-    #8fc1919b 50%,
-    #65bf6b49 50%
+    #7aafff 50%,
+    #9EC5FE 50%
   );
-  box-shadow: 0 0 50px rgb(94, 203, 150);
 }
 
 @media (max-width:1024px) {
@@ -106,11 +103,11 @@ body {
   inset: -1px;  
   background: linear-gradient(
     90deg,
-    #0bf503,
-    #ffffff,
-    #05fb11,
-    #ffffff,
-    #11ff00
+    #0307f5,
+    #040404,
+    #2200ff,
+    #000000,
+    #0d00ff
   );
   background-size: 300% 300%;
   border-radius: 16px;

@@ -2,11 +2,13 @@ import { useSelector } from "react-redux"
 import axios from "axios"
 import { useEffect, useState } from "react"
 import Alert from "./Alert"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 
-const Subject = () => {
+const Subject = () => { 
 
     const [alert , setalert] = useState(false)
-
+    const [dl , setdelete] = useState(false)
     const [sname , setname] = useState()
     const [scode , setcode] = useState()
     const [credit , setcredit] = useState()
@@ -19,6 +21,7 @@ const Subject = () => {
     const cancel = () => {
         setmodal(false)
     }
+    
     const isrequired = async () => {
         if(!sname || !scode || !credit || !facultyname){
             setalert(true);
@@ -31,6 +34,7 @@ const Subject = () => {
             return true;
         }
     }
+
     const add = async (e) => {
         e.preventDefault()
         
@@ -61,7 +65,6 @@ const Subject = () => {
                 {
                     withCredentials:true
                 })
-                console.log(response.data)
                 if(response.status === 200){
                     setsub(response.data)
                 }
@@ -75,10 +78,9 @@ const Subject = () => {
     
    const dlt = async (scode) => {
     try {
-        const dresponse = await axios.delete(
-            "http://localhost:5000/api/dsubject",
+        const dresponse = await axios.delete("http://localhost:5000/api/dsubject",
             {
-                data: { scode },   
+                data: {scode} ,   
                 withCredentials: true
             }
         );
@@ -88,22 +90,29 @@ const Subject = () => {
     } catch (error) {
         console.log("Something Went Wrong:", error);
     }
+
+    if(!dl) {
+        setdelete(true)
+    }
+    else {
+        setdelete(false)
+    }
 };
 
 
     useEffect(()=>{
         show()
-    },[modal])
+    },[modal,dl])
 
   return (
     <>
         {
             component === "addsubject" && 
             <div className="subject">
-                <div className="heading">
+                <div className="pannel_title">
                     Subjects
                 </div>
-                <pre className="line"> </pre>
+                <pre className="line" style={{marginTop:"24px"}}> </pre>
                 <div className="allsubject">
                     {
                     sub.map((item) =>
@@ -120,9 +129,7 @@ const Subject = () => {
                             <div className="facultyname">
                                 Faculty : {`${item.facultyname}`} 
                             </div>
-                            <div className="delete">
-                                <button onClick={()=>dlt(scode)}>Delte</button>
-                            </div>
+                            <button className="trash" onClick={()=>dlt(item.scode)}><FontAwesomeIcon style={{backgroundColor:"none" , outline : "none" , borderColor : "none" , border:"none"}} icon={faTrashCan} /></button>
                         </div>
                         )
                     }

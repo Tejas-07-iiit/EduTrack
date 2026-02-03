@@ -10,21 +10,24 @@ body {
 
 .navbar {
     background-color: #1E293B; 
-    padding: 15px 25px;
+    padding-left: 20px;
+    padding-right: 20px;
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     border-bottom: 1px solid #334155;
 }
 
 .heading {
     color: #F8FAFC;
-    font-size: 24px;
+    font-size: 30px;
     font-weight: 700;
     letter-spacing: -0.5px;
+    font-family: "Playwrite NZ Basic", cursive;
+    font-weight: lighter;
+    font-style: normal;
 }
 
 .navbar .menu {
-    margin-left: 40px;
     display: flex;
     gap: 25px;
 }
@@ -92,14 +95,9 @@ body {
 }
 
 .subject {
+    margin-top: 27px;
     width: 100%;    
     color:  white;
-}
-
-.subject .heading {
-    font-size: 40px;
-    font-family :'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    margin:30px;
 }
 
 .line {
@@ -123,6 +121,7 @@ body {
 }
 
 .subjectCard {
+    position: relative;
     background-color: #1E293B; 
     border: 1px solid #334155;
     border-radius: 12px;
@@ -295,17 +294,13 @@ body {
 }
 
 .add-subject-container ul {
-    margin-top: 10px;
+    margin-top: 20px;
     width: 479px;
 }
 
 .add-subject-container h3 {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
-/* 
-.description {
-
-} */
 
 .add-subject-container ul li {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -317,5 +312,30 @@ body {
     border-radius: 14px;
     margin-top: 12px;
     border-left: 3px solid #0037b8;
-    margin-top: 7px;
+}
+
+.trash {
+    all: unset;
+    position: absolute;
+    top: 140px;
+    right: 9px;
+    bottom: 5px;
+}
+.trash:hover{
+    scale: 1.2;
+}
+
+.attendance {
+    margin-top: 27px;
+    width: 100%;
+}
+
+.pannel_title {
+    color: #F8FAFC;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    font-family: "Playwrite NZ Basic", cursive;
+    font-weight: lighter;
+    font-style: normal;
 }

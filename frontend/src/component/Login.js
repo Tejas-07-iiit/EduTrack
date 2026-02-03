@@ -7,7 +7,6 @@ import { login } from "../Redux_store/Auth"
 const Login = (props) => {
 
     const dispatch = useDispatch();
-    // const auth = useSelector((state) => {state.auth.isAuth})
 
     const [email , setemail] = useState()
     const [password , setpass] = useState()

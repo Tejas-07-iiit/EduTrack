@@ -7,11 +7,10 @@ const router = express()
 router.delete("/dsubject" , Auth ,async (req,res)=>{
     try {
         const scode = req.body.scode;
-        console.log(scode)
         const response = await Subject.deleteOne({scode : scode});
+
         if(response){
-        res.status(200).json({message : "Subject Deleted successfully"})
-        // console.log("asdknsldfkasndfsn")
+            res.status(200).json({message : "Subject Deleted successfully"})
         }
 
     } catch (error) {
