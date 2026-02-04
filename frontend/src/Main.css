@@ -339,3 +339,44 @@ body {
     font-weight: lighter;
     font-style: normal;
 }
+
+.AttCard {
+    margin: auto;
+    position: relative;
+    height: 89px;
+    align-items: center;
+    margin-top: 19px;
+    border: 1px solid #a2c9ff;
+    display: flex;
+    gap: 20px;
+    width: 90%;
+    color: white;
+    border-radius: 12px;
+}
+
+.bbox {
+    display: flex;
+    gap: 10px;
+    position:absolute;
+    right: 10px;
+}
+
+.dtatt {
+    margin-left: 10px;
+}
+
+.dtatt .sname {
+    color: #4DA3FF;
+    font-size: 23px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.dtatt .fname {
+    color: #8FA3BF;
+}
+
+.percent {
+    position: absolute;
+    right: 156px;
+}

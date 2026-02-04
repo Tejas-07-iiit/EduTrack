@@ -11,16 +11,11 @@ router.post("/Attendance" , Auth , async (req,res)=>{
         const userid = req.user.userId 
 
         // console.log(userid)
-        
+        console.log(req.body)
         const {scode , present , absent} = req.body;
-        const subject = await Subject.findOne({scode : scode});
-
-        // console.log(subject)
-        const subject_id = subject._id;
-
         // console.log(userid , subject_id)
 
-        const user = await Attendance.findOne({userid : userid , scode : subject_id});
+        const user = await Attendance.findOne({userid : userid , scode : scode});
 
         let pday = user.pday ; 
         let aday = user.aday ; 

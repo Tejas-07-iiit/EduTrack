@@ -12,15 +12,8 @@ const Attendance = () => {
     const [percent , setpercent] = useState();
     const [present,setpresent] = useState();
     const [absent , setabsent] = useState();
-    const [att , setatt] = useState(null);
-
-    
-    useEffect(()=>{
-      if(att) {
-        console.log(att)
-      }
-    },[att])  
-    
+    const [att , setatt] = useState();
+    const [fdata , setfdata] = useState([]);
     
     // This Function Fetch All attendence
     const atd = async () => {
@@ -31,12 +24,12 @@ const Attendance = () => {
         if(adnc.status === 200){
           setatt(adnc.data)
         }
-
+        
       } catch (error) {
         console.log(error.message)
       }
     }
-
+    
     
     // This Function Fetch All subject
     const sub = async () => {
@@ -50,66 +43,113 @@ const Attendance = () => {
       } catch (error) {
         console.log("Something Went Wrong : " , error.message)
       }
-       if(!reload) {
+
+      if(!reload) {
         setload(true)
       }
       else {
-       setload(false) 
+        setload(false) 
       }
     }
-
-    useEffect(()=> {
+    
+    useEffect(()=>{
       sub()
-    },[reload])
+      atd()
+    },[])
 
-    // This function Can Update All Attendance
-    const updateAttendance =async () => {
+    useEffect(() => {
+        if (att && subject) {
+          const data = [];
+          console.log(att)
+          for (let i = 0; i < att.length; i++) {
+            data.push({ ...subject[i] , ...att[i]});
+          }
+          setfdata(data);
+          // console.log(data)
+        }
+    }, [att, subject]);
+
+
+
+    // This function Can Update Attendance
+    const updateAttendance =async (a,scode) => {
       try {
+        let present = false;
+        let absent = false;
+        if (a === "present") {
+          present = true;
+          absent = false;
+        }
+        else {
+          present = false;
+          absent = true;
+        }
+
         const response = await axios.post("http://localhost:5000/api/Attendance" , {
-          
+          scode,
+          present,
+          absent
         } ,{
           withCredentials : true
         })
-        
+        // console.log(response)
+        if(reload) {
+          setload(false)
+        }
+        else {
+          setload(true)
+        }
+
       } catch (error) {
         console.log("Something Went Wrong : ", error.message)
       }
     }
-
-  return (
+    return (
     <>
     {
       component === "Attendance" && 
-
-        <div className="attendance">
+      
+      <div className="attendance">
 
             <div className="pannel_title">
                 My Attendance
             </div>
 
             <pre className="line" style={{marginTop:"24px"}}></pre>
-            {/* {
-              subject.map((item) =>  */}
 
-              <div className="AttCard">
-                <div className="sname">
-                  {/* {item.sname} */}
+            {fdata && 
+              fdata.map((item) => 
+
+              <div key={item._id} className="AttCard">
+
+                <div className="dtatt">
+                  <div className="sname">
+                    {item.sname}
+                  </div>
+                  <div className="fname">
+                    {item.facultyname}
+                  </div>
                 </div>
-                <div className="facultyname">
-                  {/* {item.facultyname} */}
-                </div>
+
                 <div className="percent">
-                  {percent}
+                  {(item.pday !== 0 || item.tday !== 0) ?
+                    (item.pday/item.tday) * 100 + "%" : '0%'
+                  }
                 </div>
-                <div className="pbtn">
-                  <button onClick={atd}>Present</button>
-                </div>
-                <div className="abtn">
-                  <button>Absent</button>
+
+                <div className="bbox">
+                  <div className="pbtn">
+                    <button onClick={()=>updateAttendance("present" ,item.scode)}>Present</button>
+                  </div>
+
+                  <div className="abtn">
+                    <button onClick={()=>{updateAttendance("absent" ,item.scode)}}>Absent</button>
+                  </div>
+
                 </div>
               </div>
 
-            {/* )} */}
+             )}
         </div>
     }
     </>

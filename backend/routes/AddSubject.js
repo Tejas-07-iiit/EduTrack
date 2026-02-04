@@ -12,7 +12,7 @@ router.post("/addsubject" , Auth , async (req,res) => {
         const {sname , scode , credit , facultyname}  = req.body
 
         // console.log(req.body,"asdfasd")
-        console.log(req.user)
+        // console.log(req.user)
 
         const subject = new Subject({
             userid : req.user.userId,
@@ -23,18 +23,21 @@ router.post("/addsubject" , Auth , async (req,res) => {
         })
 
         await subject.save();
-        const subject_id = await Subject.findOne({userid : req.user.userId})
-        console.log(subject_id._id , "asdc")
-        
+        const sub = await Subject.find({userid : req.user.userId})
+        // console.log(subject_id , "asdc")
+
+        console.log(scode)
+        const fsub = await Subject.find({scode:scode})
+        console.log(fsub)
 
         const attendance = new Attendance({
-            scode : subject_id._id,
+            scode : fsub[0]._id,
             userid : req.user.userId,
             pday : 0,
             aday : 0,
             tday : 0
         })
-
+        
         await attendance.save()
 
         console.log("Subject added successfully");
