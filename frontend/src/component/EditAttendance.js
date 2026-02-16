@@ -1,24 +1,27 @@
 import axios, { all } from "axios"
 import { useDispatch } from "react-redux"
 import { setEdit } from "../Redux_store/Attedit"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Alert from "./Alert"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faXmark} from "@fortawesome/free-solid-svg-icons";
 
 const EditAttendance = (props) => {
+  // console.log(props)
+
+  console.log(props.content.Atime)
+
   const dispatch = useDispatch()
-  const [date,setdate] = useState("date")
-  const [info,setinfo] = useState("info")
   const [scode,setcode] = useState(props.content.scode)
   const [preday , setpreday] = useState(props.content.pday)
   const [today , setday] = useState(props.content.tday)
   const [alt , setalert] = useState(false)
+  const [date , setdate] = useState()
 
   const update = async (e) => {
     e.preventDefault()
 
-    console.log(preday > today , preday , today)
+    // console.log(preday > today , preday , today)
     if((parseInt(preday) > parseInt(today)) || (parseInt(preday)<0) || (parseInt(today)<0)) {
       setalert(true);
       setTimeout(() => {
@@ -53,6 +56,20 @@ const EditAttendance = (props) => {
     setpreday(props.content.pday)
   } 
 
+  // const idate = () => {
+  //     try {
+  //       const di = props.content
+  //       // console.log(di)
+  //       setdate(di.Atime)
+  //       console.log(di.Atime)
+  //     } catch (error) {
+  //       console.log("Something Went Wrong : " , error.message)
+  //     }
+  // }
+  // useEffect(()=> {
+  //   idate()
+  // }, [])
+  
   return (
     <>
         <div className="editDetail">
@@ -71,17 +88,20 @@ const EditAttendance = (props) => {
                   <button onClick={update} type="submit" className="btn btn-primary">Submit</button>
                 </form>
           </div>
-          <div className="detail">
-            <div className="dates">
-              <div className="ditem">
-                {info}
-              </div>
-              <div className="ditem">
-                {date}
-              </div>
-              <button ><FontAwesomeIcon icon={faXmark} /></button>
-            </div>
-          </div>
+            <div className="detail">
+                {
+                props.content.Atime.map((item,index)=>(
+                  <div key={index} className="dates">
+                    <div className="datt">
+                      {item.att}
+                    </div>
+                    <div className="ditem">
+                      {item.date}
+                    </div>
+                    {/* <button ><FontAwesomeIcon icon={faXmark} /> </button> */}
+                  </div>
+                ))}
+            </div>  
         </div>
     </>
   )

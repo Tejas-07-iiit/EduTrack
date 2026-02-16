@@ -472,7 +472,7 @@ body {
 
 
 .btn-primary {
-    background: linear-gradient(90deg, #5b327e, #818CF8); 
+    background: linear-gradient(90deg, #7190bb, #82a2c4); 
     color: #0F172A;
     border: none;
     border-radius: 12px;
@@ -497,18 +497,23 @@ body {
     background: linear-gradient(145deg, #1E293B, #0F172A);
     border-radius: 16px;
     display: flex;
+    height: 300px;
+    flex-direction: column;
     border: 1px solid rgba(56, 189, 248, 0.3);
     position: relative;
+    overflow-y: auto;
 }
 
 .detail .dates {
     margin-top: 8px;
+    display: flex;
+    color: white;
     position: relative;
-    background-color: #ffffffc4;
-    border: 1px solid black;
+    background-color: #334155;
+    border: 1px solid rgba(0, 0, 0, 0.266);
     border-radius: 12px;
     display: flex;
-    height: 30px;
+    height: 34px;
     width: 94%;
     margin-left: auto;
     margin-right: auto;
@@ -516,9 +521,31 @@ body {
     padding-left: 10px;
     gap: 20px;
 }
+.dates .datt-g {
+    color: green;
+    margin-left: 3px;
+}
+
+.dates .datt-r {
+    color: red;
+    margin-left: 3px;
+}
+
+.dates .ditem {
+    margin-right: 0px;
+    padding-right: 0px;
+}
 
 .detail .dates button {
     all: unset;
     position: absolute;
     right: 10px;
+}
+
+.dateandtime {
+    display: flex;
+}
+
+.ditem {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }

@@ -13,10 +13,11 @@ router.post("/Attendance" , Auth , async (req,res)=>{
         // console.log(userid)
         // console.log(req.body)
         const {scode , present , absent , date} = req.body;
-        console.log(userid , date)
+        // console.log(userid , date)
 
         const user = await Attendance.findOne({userid : userid , scode : scode});
-        console.log(user)
+        // console.log(user)
+
         let pday = user.pday ; 
         let aday = user.aday ; 
         let tday = user.tday+1; 
@@ -33,7 +34,7 @@ router.post("/Attendance" , Auth , async (req,res)=>{
                         tday : tday
                 },
                     $push : {
-                        "Atime" : ["Present" , date]
+                        "Atime" : {att : "Present" , date : date}
                     }
                 }
             )
@@ -49,14 +50,14 @@ router.post("/Attendance" , Auth , async (req,res)=>{
                         tday : tday 
                 },
                     $push : {
-                        Atime : ["Absent" , date]
+                        Atime : {att : "Absent" , date : date}
                     }
                 }
         )
         }
         // console.log(ack)
         if(ack.acknowledged){
-            res.status(200).json({pday,aday,tday})
+            res.status(200).json(user)
         }
         else {
             console.log("Please Try Again")

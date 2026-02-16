@@ -76,7 +76,7 @@ import EditAttendance from "./EditAttendance";
     useEffect(() => {
         if (att && subject) {
             const data = [];
-            console.log(att);
+            // console.log(att);
             for (let i = 0; i < att.length; i++) {
                 data.push({ ...subject[i], ...att[i] });
             }

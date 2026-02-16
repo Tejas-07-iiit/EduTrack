@@ -46,6 +46,6 @@ app.use("/api/" , require("./routes/Allattendance"))
 // Edit initial Attendance
 app.use("/api/" , require("./routes/EditAttendance"))
 
-app.listen(5000,"0.0.0.0" , ()=> {
+app.listen(process.env.PORT, ()=> {
   console.log("Your Server is running on port  : " , process.env.PORT)
 })
