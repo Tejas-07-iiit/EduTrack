@@ -5,7 +5,6 @@
 
 body {
     background-color: #0F172A;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 .navbar {
@@ -17,12 +16,12 @@ body {
     border-bottom: 1px solid #334155;
 }
 
+
 .heading {
     color: #F8FAFC;
-    font-size: 30px;
-    font-weight: 700;
+    font-size: 50px;
     letter-spacing: -0.5px;
-    font-family: "Playwrite NZ Basic", cursive;
+    font-family: "Caveat", cursive;
     font-weight: lighter;
     font-style: normal;
 }
@@ -299,7 +298,8 @@ body {
 }
 
 .add-subject-container h3 {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+    font-family: 'Lobster Two', cursive;
 }
 
 .add-subject-container ul li {
@@ -332,10 +332,9 @@ body {
 
 .pannel_title {
     color: #F8FAFC;
-    font-size: 30px;
-    font-weight: 700;
+    font-size: 35px;
     letter-spacing: -0.5px;
-    font-family: "Playwrite NZ Basic", cursive;
+     font-family: "Playwrite NZ Basic", cursive;
     font-weight: lighter;
     font-style: normal;
 }
@@ -509,10 +508,11 @@ body {
     display: flex;
     color: white;
     position: relative;
-    background-color: #334155;
+    background-color: #33415588;
     border: 1px solid rgba(0, 0, 0, 0.266);
     border-radius: 12px;
     display: flex;
+    font-size: 14px;
     height: 34px;
     width: 94%;
     margin-left: auto;
@@ -522,18 +522,13 @@ body {
     gap: 20px;
 }
 .dates .datt-g {
-    color: green;
+    color: #4ADE80;
     margin-left: 3px;
 }
 
 .dates .datt-r {
-    color: red;
+    color: #F87171;
     margin-left: 3px;
-}
-
-.dates .ditem {
-    margin-right: 0px;
-    padding-right: 0px;
 }
 
 .detail .dates button {
@@ -547,5 +542,13 @@ body {
 }
 
 .ditem {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: rgba(255, 255, 255, 0.69);
+    margin-right: 0px;
+    padding-right: 0px;
+    font-family: "Caveat", cursive;
+    font-size: 17px;
+    position: absolute;
+    font-weight: 500;
+    right: 7px;
+    top: 2px;
 }

@@ -92,7 +92,7 @@ const EditAttendance = (props) => {
                 {
                 props.content.Atime.map((item,index)=>(
                   <div key={index} className="dates">
-                    <div className="datt">
+                    <div className={item.att === "Present" ? "datt-g" : "datt-r"}>
                       {item.att}
                     </div>
                     <div className="ditem">

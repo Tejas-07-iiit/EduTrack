@@ -7,7 +7,7 @@ router.use(cookieParser());
 const User = require("../models/user.model")
 
 // End Point -> Login
-router.post("/login" , async (req,res)=>{
+router.post("/login" ,  async (req,res)=>{
     
     try {
         const loginuser = await User.findOne({email:req.body.email})
@@ -21,7 +21,7 @@ router.post("/login" , async (req,res)=>{
             },
             process.env.JWT_SECRET,
             {
-                expiresIn: "30m"
+                expiresIn: "7d"
             }
         );
         //    console.log(accessToken)

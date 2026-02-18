@@ -8,27 +8,19 @@ import { faCalendarCheck, faCalendarXmark ,faPenToSquare} from "@fortawesome/fre
 import Fill from "./Fill";
 import EditAttendance from "./EditAttendance";
 
-    const Attendance = () => {
+const Attendance = () => {
+
     const component = useSelector((state) => state.comp.comp);
     const edit = useSelector((state)=>state.edit.edit)
     const dispatch = useDispatch()
-    const [date,setdate] = useState()
+    // const [date,setdate] = useState()
     const [subject, setsub] = useState();
     const [reload, setload] = useState(false);
     const [att, setatt] = useState();
     const [fdata, setfdata] = useState([]);
     
         // date and time when attendance update
-        const fetchdate = () => {
-            const date = new Date()
-    
-            let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-            let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-            
-            const full_date = days[date.getDay()] + " - " + date.getDate() + " " + months[date.getMonth()] + " " + date.getFullYear();
-            // console.log(full_date)
-            setdate(full_date)       
-        }
+        
     
     // This Function Fetch All attendence
     const atd = async () => {
@@ -87,7 +79,6 @@ import EditAttendance from "./EditAttendance";
 
     // This function Can Update Attendance
     const updateAttendance = async (a, scode, pday, aday, tday) => {
-        fetchdate()
         try {
             let present = false;
             let absent = false;
@@ -104,8 +95,7 @@ import EditAttendance from "./EditAttendance";
             {
                 scode,
                 present,
-                absent,
-                date
+                absent
             },
             {
                 withCredentials: true,
