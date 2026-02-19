@@ -1,7 +1,7 @@
 import axios, { all } from "axios"
 import { useDispatch, useSelector } from "react-redux"
 import { setEdit } from "../Redux_store/Attedit"
-import { setreload } from "../Redux_store/Reload"
+import { reload } from "../Redux_store/Reload"
 import { useEffect, useState } from "react"
 import Alert from "./Alert"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -11,7 +11,7 @@ const EditAttendance = (props) => {
   // console.log(props)
 
   // console.log(props.content.Atime)
-  const reload = useSelector((state)=>state.rel.rel)
+  const reload = useSelector((state)=>state.reload.reload)
 
   const dispatch = useDispatch()
 

@@ -9,7 +9,7 @@ const Store =  configureStore({
     auth: authReducer,
     comp : compReducer,
     edit : EditAtt,
-    rel : setreload
+    reload : setreload
   },
 });
 

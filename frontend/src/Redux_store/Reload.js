@@ -1,16 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const rel = createSlice({
+const reloadslice = createSlice({
   name: "reload",
   initialState: {
     reload: false
   },
   reducers: {
-    setreload : (state, action) => {
+    reload : (state, action) => {
       state.reload = action.payload;
     }
   },
 });
 
-export const {setreload}  = rel.actions;
-export default rel.reducer;
+export const {reload}  = reloadslice.actions;
+export default reloadslice.reducer;

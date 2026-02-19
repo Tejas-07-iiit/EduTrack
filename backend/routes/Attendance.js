@@ -25,7 +25,7 @@ router.post("/Attendance" , Auth , async (req,res)=>{
 
         const {scode , present , absent} = req.body;
 
-        console.log(present)
+        // console.log(present)
 
         const user = await Attendance.findOne({userid : userid , scode : scode});
         // console.log(user)

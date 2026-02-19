@@ -1,6 +1,6 @@
 import axios from "axios";
 import comp from "../Redux_store/Comp";
-import {setreload} from "../Redux_store/Reload"
+import {reload} from "../Redux_store/Reload"
 import {setEdit} from "../Redux_store/Attedit"
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
@@ -13,9 +13,11 @@ const Attendance = () => {
 
     const component = useSelector((state) => state.comp.comp);
     const edit = useSelector((state)=>state.edit.edit)
-    const reload = useSelector((state)=>state.rel.rel)
-
+    const rel = useSelector((state)=>state.reload.reload)
+    // console.log(rel)
+    
     const dispatch = useDispatch()
+
 
     // const [date,setdate] = useState()
     const [subject, setsub] = useState();
@@ -30,7 +32,7 @@ const Attendance = () => {
             "http://localhost:5000/api/allAttendance",
             {},
             {
-            withCredentials: true,
+                withCredentials: true,
             },
         );
         if (adnc.status === 200) {
@@ -62,9 +64,10 @@ const Attendance = () => {
     };
 
     useEffect(() => {
+        // console.log(rel,"end")
         sub();
         atd();
-    }, [reload]);
+    }, [rel]);
 
     useEffect(() => {
         if (att && subject) {
@@ -76,7 +79,7 @@ const Attendance = () => {
             setfdata(data);
             // console.log(data)
         }
-    }, [att, subject , reload]);
+    }, [att, subject , rel]);
 
     // This function Can Update Attendance
     const updateAttendance = async (a, scode, pday, aday, tday) => {
@@ -104,10 +107,12 @@ const Attendance = () => {
         );
 
         // console.log(response)
-        if (reload) {
-            dispatch(setreload(false))
+        if (rel) {
+            // console.log(rel, "first")
+            dispatch(reload(false))
+            
         } else {
-            dispatch(setreload(true))
+            dispatch(reload(true))
         }
         } catch (error) {
             console.log("Something Went Wrong : ", error.message);
