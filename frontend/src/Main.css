@@ -774,3 +774,174 @@ body {
 .ctaBtn:hover {
   background: #118ae0;
 }
+
+.footer {
+  width: 100%;
+  background: #0b0f1a;
+  color: white;
+  padding: 60px 80px 20px;
+  margin-top: 80px;
+}
+
+.footerContainer {
+  display: flex;
+  justify-content: space-between;
+  gap: 60px;
+}
+
+/* LEFT */
+.footerLeft {
+  flex: 1;
+  max-width: 420px;
+}
+
+.footerLogo {
+  font-size: 35px;
+  font-weight: bold;
+  color: #2ea8ff;
+}
+
+.footerDesc {
+  margin-top: 15px;
+  font-size: 14px;
+  opacity: 0.75;
+  line-height: 1.6;
+}
+
+.footerLinks {
+  margin-top: 15px;
+  display: flex;
+  gap: 15px;
+}
+
+.footerLinks a {
+  font-size: 14px;
+  text-decoration: none;
+  color: #2ea8ff;
+  transition: 0.3s;
+}
+
+.footerLinks a:hover {
+  opacity: 0.7;
+}
+
+.footerLine {
+  margin: 25px 0;
+  border: 0;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* NEWSLETTER */
+.newsletterTitle {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.newsletterDesc {
+  font-size: 13px;
+  opacity: 0.7;
+  margin-top: 5px;
+}
+
+.newsletterBox {
+  margin-top: 15px;
+  display: flex;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.newsletterBox input {
+  flex: 1;
+  padding: 12px;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+}
+
+.newsletterBox button {
+  padding: 12px 25px;
+  border: none;
+  cursor: pointer;
+  background: #2ea8ff;
+  color: white;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.newsletterBox button:hover {
+  background: #138de6;
+}
+
+/* SOCIAL ICONS */
+.socialIcons {
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+  font-size: 22px;
+}
+
+.socialIcons a {
+  color: white;
+  opacity: 0.8;
+  transition: 0.3s;
+}
+
+.socialIcons a:hover {
+  color: #2ea8ff;
+  opacity: 1;
+}
+
+/* RIGHT */
+.footerRight {
+  flex: 2;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.footerColumn h3 {
+  font-size: 16px;
+  margin-bottom: 15px;
+  color: white;
+}
+
+.footerColumn a {
+  display: block;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 10px;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.footerColumn a:hover {
+  color: #2ea8ff;
+}
+
+/* BOTTOM */
+.footerBottom {
+  margin-top: 40px;
+  padding-top: 15px;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 13px;
+  opacity: 0.6;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .footer {
+    padding: 50px 20px;
+  }
+
+  .footerContainer {
+    flex-direction: column;
+  }
+
+  .footerRight {
+    flex-direction: column;
+  }
+}

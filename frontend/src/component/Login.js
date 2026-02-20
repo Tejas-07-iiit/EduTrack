@@ -51,7 +51,7 @@ const Login = (props) => {
     {comp1 === "signin" && 
     <div className="page">
         <div className="register">
-                <h1 className=  "text" style={{textAlign:"center" , fontSize:"35px"}}>Sign in</h1>
+                <h1 className="" style={{textAlign:"center" , fontSize:"35px" , fontFamily:"Noto Serif, serif;"}}>Sign in</h1>
                 <hr></hr>
                 <form onSubmit={loginuser}>
                 {alert && <Alert message={"Invalid Credantials"}/>}

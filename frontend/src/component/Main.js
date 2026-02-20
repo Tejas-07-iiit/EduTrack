@@ -1,5 +1,13 @@
 import { useDispatch, useSelector } from "react-redux"
 import { comp } from "../Redux_store/Comp"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faGithub,
+  faLinkedin,
+  faInstagram,
+  faTwitter,
+} from "@fortawesome/free-brands-svg-icons";
+import { faGlobe } from "@fortawesome/free-solid-svg-icons";
 
 const Main = () => {
 
@@ -102,12 +110,106 @@ const Main = () => {
       </section>
 
       {/* CTA SECTION */}
-      <section className="ctaSection">
-        <h2>Start Tracking Your Attendance Today 🚀</h2>
-        <p>Stay consistent, stay disciplined, and never miss your attendance goal.</p>
+     <footer className="footer">
 
-        <button className="ctaBtn">Go to Dashboard</button>
-      </section>
+      <div className="footerContainer">
+
+        {/* LEFT SECTION */}
+        <div className="footerLeft">
+          <h2 className="footerLogo">EduTrack</h2>
+
+          <p className="footerDesc">
+            EduTrack helps students manage subjects and track attendance
+            efficiently. Stay updated, stay disciplined, and never miss your
+            attendance goals.
+          </p>
+
+          <div className="footerLinks">
+            <a href="https://your-portfolio-link.com" target="_blank" rel="noreferrer">
+              <FontAwesomeIcon icon={faGlobe} /> Portfolio
+            </a>
+
+            <a href="https://github.com/your-github" target="_blank" rel="noreferrer">
+              <FontAwesomeIcon icon={faGithub} /> GitHub
+            </a>
+          </div>
+
+          <hr className="footerLine" />
+
+          {/* Newsletter */}
+          <h3 className="newsletterTitle">Join Newsletter</h3>
+          <p className="newsletterDesc">
+            Get updates and new features info.
+          </p>
+
+          <div className="newsletterBox">
+            <input type="email" placeholder="you@example.com" />
+            <button>Join</button>
+          </div>
+
+          {/* SOCIAL ICONS */}
+          <div className="socialIcons">
+            <a href="https://linkedin.com/in/your-link" target="_blank" rel="noreferrer">
+              <FontAwesomeIcon icon={faLinkedin} />
+            </a>
+
+            <a href="https://github.com/your-github" target="_blank" rel="noreferrer">
+              <FontAwesomeIcon icon={faGithub} />
+            </a>
+
+            <a href="https://instagram.com/your-instagram" target="_blank" rel="noreferrer">
+              <FontAwesomeIcon icon={faInstagram} />
+            </a>
+
+            <a href="https://twitter.com/your-twitter" target="_blank" rel="noreferrer">
+              <FontAwesomeIcon icon={faTwitter} />
+            </a>
+          </div>
+        </div>
+
+        {/* RIGHT SECTION */}
+        <div className="footerRight">
+
+          <div className="footerColumn">
+            <h3>Quick Links</h3>
+            <a href="/">Home</a>
+            <a href="/dashboard">Dashboard</a>
+            <a href="/attendance">Attendance</a>
+            <a href="/addsubject">Add Subject</a>
+          </div>
+
+          <div className="footerColumn">
+            <h3>Project</h3>
+            <a href="/about">About</a>
+            <a href="/contact">Contact</a>
+            <a href="https://github.com/your-github-repo" target="_blank" rel="noreferrer">
+              Source Code
+            </a>
+            <a href="#">Documentation</a>
+          </div>
+
+          <div className="footerColumn">
+            <h3>Connect</h3>
+            <a href="mailto:yourmail@gmail.com">Email</a>
+            <a href="https://linkedin.com/in/your-link" target="_blank" rel="noreferrer">
+              LinkedIn
+            </a>
+            <a href="https://github.com/your-github" target="_blank" rel="noreferrer">
+              GitHub
+            </a>
+            <a href="https://your-portfolio-link.com" target="_blank" rel="noreferrer">
+              Portfolio
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+      {/* BOTTOM COPYRIGHT */}
+      <div className="footerBottom">
+        <p>© {new Date().getFullYear()} EduTrack | Developed by Your Name</p>
+      </div>
+    </footer>
 
       </div>    
     }
