@@ -46,6 +46,15 @@ app.use("/api/" , require("./routes/Allattendance"))
 // Edit initial Attendance
 app.use("/api/" , require("./routes/EditAttendance"))
 
+// serve static file (Profile image)
+app.use("/uploads", express.static("uploads"));
+
+// Use routes
+app.use("/api", require("./routes/upload"));
+
+// For Logout 
+app.use("/api" , require("./routes/logout"))
+
 app.listen(process.env.PORT, ()=> {
   console.log("Your Server is running on port  : " , process.env.PORT)
 })

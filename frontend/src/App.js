@@ -1,5 +1,6 @@
 import './App.css';
 import './Main.css';
+import './Profile.css'
 import Register from './component/Register';
 import axios from 'axios';
 import { useEffect } from 'react';
@@ -15,10 +16,10 @@ import Login from './component/Login';
 
 function App() {
     const dispatch = useDispatch();
-      
+    
     const comp = useSelector((state)=>state.comp.comp)
     let auth = useSelector((state)=>state.auth.isAuth)
-    
+
     useEffect(()=>{
       // check tocken
       const Refresh = async () => {
@@ -29,8 +30,9 @@ function App() {
               withCredentials : true
             }
           )
+          const pld = {user : response.data.dc , at:true}
           if(response.status === 200) {
-            dispatch(login(response.data.dc))  
+            dispatch(login(pld))  
           }
         }
         catch (error) {
@@ -44,7 +46,8 @@ function App() {
     return (
       <>
         {auth ?  <Home/> : <Register/>}
-        {!auth &&   <Main/>}
+        {/* {!auth ?  <Main/> : <Home/>} */}
+        <Main/>
         {comp === "signin" && <Login/>}
         <div className="mainbody">
          {auth && 

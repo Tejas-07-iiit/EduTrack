@@ -1,0 +1,48 @@
+.menu {
+    position: relative;
+}
+
+.profilemenu {
+    display: none;
+    position: absolute;
+    width: 120px;
+    right: 0px;
+    min-height: 30px;
+    background-color: white;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.profilemenu .pitem {
+    text-decoration: none;
+    color: black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    white-space: nowrap;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.436);
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+.pitem:hover {
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.724);
+    background-color: rgba(209, 203, 203, 0.788);
+}
+
+.pitem {
+    display: flex;
+    /* align-items: center; */
+    gap: 3px;
+    padding-left: 10px;
+}
+
+.pitem button {
+    all: unset;
+    text-align: left;
+}
+
+.profile:hover  .profilemenu{
+    display: flex;
+    flex-direction: column;
+}

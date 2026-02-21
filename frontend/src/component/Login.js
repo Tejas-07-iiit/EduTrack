@@ -21,15 +21,19 @@ const Login = (props) => {
 
     const loginuser = async (e) => {
         try {
-                e.preventDefault();
+            e.preventDefault();
             const response = await axios.post("http://localhost:5000/api/login",{
                 email,
                 password    
             },
             {withCredentials:true})
-            
+
+            console.log(response.data)
+
+            const pld = {user : response.data , at : true}
+
             if(response.status === 200){
-                dispatch(login(response.data))
+                dispatch(login(pld))
                 dispatch(comp("."))
             }
             else{   
