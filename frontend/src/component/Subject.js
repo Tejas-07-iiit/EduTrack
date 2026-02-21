@@ -22,11 +22,9 @@ const Subject = () => {
         setmodal(false)
     }
 
-    useEffect(()=> {
-        if(modal) {
-            document.body.style.filter =  `blur(${5}px)`
-        }
-    })
+    // useEffect(() => {
+    //     document.getElementById("bd").style.filter = modal ? "blur(5px)" : "blur(0px)";
+    // }, [modal]);
     
     const isrequired = async () => {
         if(!sname || !scode || !credit || !facultyname){
@@ -115,6 +113,7 @@ const Subject = () => {
         {
             component === "addsubject" && 
             <div className="subject" >
+                {modal && <div className="blurOverlay"></div>}
                 <div className="pannel_title">
                     Subjects
                 </div>
@@ -165,7 +164,7 @@ const Subject = () => {
                 </div>
 
                     {modal &&
-                        <form className="modal_pop" onClick={(e)=>e.stopPropagation()}>
+                        <form id="modal" className="modal_pop" onClick={(e)=>e.stopPropagation()}>
                             <div className="formItem title1">
                                 <p>Subject Detail</p>
                             </div>

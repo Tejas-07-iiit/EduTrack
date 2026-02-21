@@ -46,8 +46,8 @@ function App() {
     return (
       <>
         {auth ?  <Home/> : <Register/>}
-        {/* {!auth ?  <Main/> : <Home/>} */}
-        <Main/>
+        {!auth &&  <Main/>}
+        
         {comp === "signin" && <Login/>}
         <div className="mainbody">
          {auth && 
