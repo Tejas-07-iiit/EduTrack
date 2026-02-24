@@ -18,7 +18,7 @@ router.post("/refresh", (req, res) => {
         }
         
         const dc = jwt.verify(token, process.env.JWT_SECRET);
-        
+        // console.log(dc)
         res.status(200).json({dc});
         
     }

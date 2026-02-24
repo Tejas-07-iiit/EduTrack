@@ -28,7 +28,7 @@ const Login = (props) => {
             },
             {withCredentials:true})
 
-            console.log(response.data)
+            // console.log(response.data)
 
             const pld = {user : response.data , at : true}
 

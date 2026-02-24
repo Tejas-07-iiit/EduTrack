@@ -55,6 +55,9 @@ app.use("/api", require("./routes/upload"));
 // For Logout 
 app.use("/api" , require("./routes/logout"))
 
+// For fetch profile
+app.use("/api" , require("./routes/Profile"))
+
 app.listen(process.env.PORT, ()=> {
   console.log("Your Server is running on port  : " , process.env.PORT)
 })

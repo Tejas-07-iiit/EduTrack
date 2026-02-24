@@ -32,10 +32,14 @@ function App() {
             }
           )
           const pld = {user : response.data.dc , at:true}
+
           if(response.status === 200) {
             dispatch(login(pld))  
+            // console.log("ok")
           }
+
         }
+        
         catch (error) {
             console.log(error.message)
         }
