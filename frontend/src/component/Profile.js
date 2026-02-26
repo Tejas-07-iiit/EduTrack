@@ -1,12 +1,13 @@
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleUser } from '@fortawesome/free-regular-svg-icons';
 import axios from 'axios';
+import {image1} from "../Redux_store/Image"
 import { useEffect, useState } from 'react';
 
 const Profile = () => {
 
-  const [image, setimage] = useState(null)
+  const image = useSelector((state)=> state.image1.image1)
   const comp = useSelector((state) => state.comp.comp)
   const user = useSelector((state) => state.auth.user) || 0
   const [path, setpath] = useState(null)
@@ -14,7 +15,8 @@ const Profile = () => {
   const [fname , setfname] = useState()
   const [mail, setmail] = useState()
   // fetch profile detail 
- 
+  
+  const dispatch = useDispatch()
     const dt = async () => {
       try {
         
@@ -78,7 +80,7 @@ const Profile = () => {
               ) : (
                 <FontAwesomeIcon icon={faCircleUser} />
               )}
-            <input style={{display:'none'}} type="file" id='chsfile' onChange={(e) => { setImageError(false); setimage(e.target.files[0]); }} />
+            <input style={{display:'none'}} type="file" id='chsfile' onChange={(e) => { setImageError(false); dispatch(image1(e.target.files[0])); }} />
             <label for="chsfile" className='fileibtn'>Choose File</label>
           </div>
 

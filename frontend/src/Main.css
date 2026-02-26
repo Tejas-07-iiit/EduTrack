@@ -984,3 +984,10 @@ body {
   }
 
 }
+
+.icon img{
+    height: 35px;
+    width: 35px;
+    border: 2px solid rgb(71, 71, 194);
+    border-radius: 19px;
+}
