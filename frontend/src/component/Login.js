@@ -3,7 +3,7 @@ import {useState} from "react"
 import Alert from "./Alert"
 import { useDispatch, useSelector } from "react-redux"
 import { login } from "../Redux_store/Auth"
-import {comp} from "../Redux_store/Comp"
+import {comp} from "../Redux_store/Comp"    
 
 const Login = (props) => {
 
@@ -37,7 +37,7 @@ const Login = (props) => {
                 dispatch(comp("."))
             }
             else{   
-                console.log("Something Error ocurred in server");
+                console.log("Something Error ocurred in s   erver");
             }
             
         } catch (error) {  

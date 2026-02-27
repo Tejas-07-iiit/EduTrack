@@ -16,6 +16,15 @@ const Home = () => {
   const image = useSelector((state)=> state.image1.image1)
 
   const dispatch = useDispatch()
+
+    const go_about = () => {
+      console.log("iamin")
+      dispatch(comp("about"))
+    }
+
+    const go_contact = () => {
+      dispatch(comp("contact"))
+    }
     useEffect(() => {
     if (!image) return;
 
@@ -74,10 +83,10 @@ const Home = () => {
           <div className="menu">
 
               <div className="item">
-                <a to="/">About</a>
+                <div onClick={go_about}>About</div>
               </div>
               <div className="item">
-                <a to="/">Contact</a>
+                <div onClick={go_contact}>Contact</div>
               </div>
 
               <div className="profile">

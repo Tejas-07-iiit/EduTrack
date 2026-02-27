@@ -15,6 +15,8 @@ import Attendance from './component/Attendance';
 import Main from './component/Main';
 import Login from './component/Login';
 import Profile from './component/Profile';
+import About from './component/About';
+import Contact from './component/Contact';
 
 function App() {
     const dispatch = useDispatch();
@@ -65,6 +67,8 @@ function App() {
           {auth && <Subject/> }
           {auth && <Attendance/>}
           <Profile/>
+          <About/>
+          <Contact/>
         </div>
       </>
   );
