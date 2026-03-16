@@ -1,5 +1,4 @@
 import { useState } from "react"
-import Login from "./Login"
 import axios from "axios"
 import Alert from "./Alert"
 import { useDispatch, useSelector } from "react-redux"
@@ -45,7 +44,7 @@ const Register = () => {
         e.preventDefault();
         try {
             if (isrequired() && (password === cpassword)) {
-                await axios.post("http://localhost:5000/api/register", {
+                await axios.post(`${process.env.REACT_APP_API_URL}/register`, {
                     f_name,
                     l_name,
                     email,

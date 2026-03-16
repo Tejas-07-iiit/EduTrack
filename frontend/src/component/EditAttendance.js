@@ -1,23 +1,17 @@
-import axios, { all } from "axios"
-import { useDispatch, useSelector } from "react-redux"
+import axios from "axios"
+import { useDispatch } from "react-redux"
 import { setEdit } from "../Redux_store/Attedit"
-import { reload } from "../Redux_store/Reload"
 import { useEffect, useState } from "react"
 import Alert from "./Alert"
 
 const EditAttendance = (props) => {
 
-  
-  // console.log(props.content.Atime)
-  const rel = useSelector((state)=>state.reload.reload)
-
   const dispatch = useDispatch()
 
-  const [scode,setcode] = useState(props.content.scode)
+  const scode = useState(props.content.scode)
   const [preday , setpreday] = useState(props.content.pday)
   const [today , setday] = useState(props.content.tday)
   const [alt , setalert] = useState(false)
-  const [date , setdate] = useState()
   
   useEffect(()=> {
     console.log(props)
@@ -42,7 +36,8 @@ const EditAttendance = (props) => {
 
     const aday = today - preday;
     try {
-      const response = await axios.put("http://localhost:5000/api/editatt" , {
+      console.log(scode)
+      const response = await axios.put(`${process.env.REACT_APP_API_URL}/editatt` , {
         scode : scode,
         pday : preday,
         tday : today,

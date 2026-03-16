@@ -5,6 +5,7 @@ import Alert from "./Alert"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { reload } from "../Redux_store/Reload";
+
 const Subject = () => { 
 
     const [alert , setalert] = useState(false)
@@ -47,7 +48,7 @@ const Subject = () => {
         
         try { 
             if(await isrequired()) {
-                const addsubject = await axios.post("http://localhost:5000/api/addsubject",{ 
+                const addsubject = await axios.post(`${process.env.REACT_APP_API_URL}/addsubject`,{ 
                     sname,
                     scode,
                     credit,
@@ -73,7 +74,7 @@ const Subject = () => {
 
     const show = async () => {
         try {
-            const response = await axios.post("http://localhost:5000/api/allsubject",
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}/allsubject`,
                 {},
                 {
                     withCredentials:true
@@ -91,7 +92,7 @@ const Subject = () => {
     
    const dlt = async (scode) => {
     try {
-        const dresponse = await axios.delete("http://localhost:5000/api/dsubject",
+        const dresponse = await axios.delete(`${process.env.REACT_APP_API_URL}/dsubject`,
             {
                 data: {scode} ,   
                 withCredentials: true

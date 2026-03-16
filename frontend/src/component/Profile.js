@@ -5,6 +5,8 @@ import axios from 'axios';
 import {image1} from "../Redux_store/Image"
 import { useEffect, useState } from 'react';
 
+
+
 const Profile = () => {
 
   const image = useSelector((state)=> state.image1.image1)
@@ -15,13 +17,15 @@ const Profile = () => {
   const [fname , setfname] = useState()
   const [mail, setmail] = useState()
   // fetch profile detail 
+
+  
   
   const dispatch = useDispatch()
     const dt = async () => {
       try {
         
         if(user !== 0) {
-          const response = await axios.post("http://localhost:5000/api/prrofile" , {} , {
+          const response = await axios.post(`${process.env.REACT_APP_API_URL}/prrofile` , {} , {
             withCredentials:true
           })
     
@@ -35,7 +39,6 @@ const Profile = () => {
     }
       dt()
   
-
   useEffect(() => {
     if (!image) return;
 
@@ -45,13 +48,13 @@ const Profile = () => {
         formdata.append("profile", image);
 
         const response = await axios.post(
-          "http://localhost:5000/api/profile-picture",
+          `${process.env.REACT_APP_API_URL}/profile-picture`,
           formdata,
           { withCredentials: true }
         );
 
         setpath(
-          `http://localhost:5000${response.data.image}?v=${Date.now()}`
+          `${process.env.REACT_APP_API_URL}${response.data.image}?v=${Date.now()}`
         );
         setImageError(false);
       } catch (error) {
@@ -64,7 +67,7 @@ const Profile = () => {
 
   useEffect(() => {
     if (user && user.userId) {
-      setpath(`http://localhost:5000/uploads/${user.userId}.webp?v=${Date.now()}`)
+      setpath(`${process.env.REACT_APP_API_URL}/uploads/${user.userId}.webp?v=${Date.now()}`)
       setImageError(false);
     }
   }, [user])

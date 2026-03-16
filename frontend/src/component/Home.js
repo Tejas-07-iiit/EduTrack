@@ -8,6 +8,8 @@ import { useDispatch } from 'react-redux';
 import {login} from "../Redux_store/Auth"
 import { comp } from '../Redux_store/Comp';
 
+
+
 const Home = () => {
   
   const user = useSelector((state) => state.auth.user) || 0
@@ -34,13 +36,13 @@ const Home = () => {
         formdata.append("profile", image);
 
         const response = await axios.post(
-          "http://localhost:5000/api/profile-picture",
+          `${process.env.REACT_APP_API_URL}/profile-picture`,
           formdata,
           { withCredentials: true }
         );
 
         setpath(
-          `http://localhost:5000${response.data.image}?v=${Date.now()}`
+          `${process.env.REACT_APP_API_URL}${response.data.image}?v=${Date.now()}`
         );
         setImageError(false);
       } catch (error) {
@@ -53,7 +55,7 @@ const Home = () => {
   
   const logout = async () => {
     try {
-      const response = await axios.post("http://localhost:5000/api/logout" , {} , {
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/logout`, {} , {
         withCredentials:true
       })
 
@@ -69,7 +71,7 @@ const Home = () => {
 
   useEffect(() => {
       if (user && user.userId) {
-        setpath(`http://localhost:5000/uploads/${user.userId}.webp?v=${Date.now()}`)
+        setpath(`${process.env.REACT_APP_API_URL}/uploads/${user.userId}.webp?v=${Date.now()}`)
         setImageError(false);
       }
     }, [user])

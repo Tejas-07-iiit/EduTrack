@@ -5,6 +5,9 @@ import { useDispatch, useSelector } from "react-redux"
 import { login } from "../Redux_store/Auth"
 import {comp} from "../Redux_store/Comp"    
 
+
+
+
 const Login = (props) => {
 
     const dispatch = useDispatch();
@@ -22,7 +25,7 @@ const Login = (props) => {
     const loginuser = async (e) => {
         try {
             e.preventDefault();
-            const response = await axios.post("http://localhost:5000/api/login",{
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}/login`,{
                 email,
                 password    
             },

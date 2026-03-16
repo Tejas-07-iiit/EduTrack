@@ -9,6 +9,7 @@ import { faCalendarCheck, faCalendarXmark ,faPenToSquare} from "@fortawesome/fre
 import Fill from "./Fill";
 import EditAttendance from "./EditAttendance";
 
+
 const Attendance = () => {
 
     const component = useSelector((state) => state.comp.comp);
@@ -29,7 +30,7 @@ const Attendance = () => {
     const atd = async () => {
         try {
         const adnc = await axios.post(
-            "http://localhost:5000/api/allAttendance",
+            `${process.env.REACT_APP_API_URL}/allAttendance`,
             {},
             {
                 withCredentials: true,
@@ -46,7 +47,7 @@ const Attendance = () => {
     // This Function Fetch All subject
     const sub = async () => {
         try {
-            const sbj = await axios.post( "http://localhost:5000/api/allsubject",
+            const sbj = await axios.post(`${process.env.REACT_APP_API_URL}/allsubject`,
             {},
             {
             withCredentials: true,
@@ -104,7 +105,7 @@ const Attendance = () => {
             absent = true;
         }
 
-        await axios.post( "http://localhost:5000/api/Attendance",
+        await axios.post( `${process.env.REACT_APP_API_URL}/Attendance`,
             {
                 scode,
                 present,

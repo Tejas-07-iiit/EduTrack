@@ -6,6 +6,7 @@ import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import axios from 'axios';
 import Alert from './Alert';
 
+
 const Contact = () => {
 
     const comp = useSelector((state)=>state.comp.comp)
@@ -16,7 +17,7 @@ const Contact = () => {
     const send = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post("http://localhost:5000/api/msg" , {
+            await axios.post(`${process.env.REACT_APP_API_URL}/msg` , {
                 email : email,
                 Msg : msg
             },{

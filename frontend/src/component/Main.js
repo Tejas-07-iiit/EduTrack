@@ -3,9 +3,7 @@ import { comp } from "../Redux_store/Comp"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faGithub,
-    faLinkedin,
-    faInstagram,
-    faTwitter,
+    faLinkedin
 } from "@fortawesome/free-brands-svg-icons";
 import { faGlobe } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
@@ -26,9 +24,10 @@ const Main = () => {
         try {
             e.preventDefault()
 
-            const res = await axios.post("http://localhost:5000/api/news" , {
+            await axios.post(`${process.env.REACT_APP_API_URL}/news` , {
                 email:email
             })
+
             setemail("")
         } catch (error) {
             console.log("error in news",error.message)
