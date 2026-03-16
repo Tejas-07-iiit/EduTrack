@@ -47,7 +47,7 @@ app.use("/api/" , require("./routes/Allattendance"))
 app.use("/api/" , require("./routes/EditAttendance"))
 
 // serve static file (Profile image)
-app.use("/uploads", express.static("uploads"));
+app.use("/api/uploads", express.static("uploads"));
 
 // Use routes
 app.use("/api", require("./routes/upload"));
