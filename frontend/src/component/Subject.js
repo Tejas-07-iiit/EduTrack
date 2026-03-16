@@ -1,10 +1,10 @@
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import axios from "axios"
 import { useEffect, useState } from "react"
 import Alert from "./Alert"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
-
+import { reload } from "../Redux_store/Reload";
 const Subject = () => { 
 
     const [alert , setalert] = useState(false)
@@ -16,7 +16,10 @@ const Subject = () => {
 
     const [modal , setmodal] = useState(false)
     const [sub , setsub] = useState()
+
+    const dispatch = useDispatch()
     const component = useSelector((state) => state.comp.comp)
+    const rel = useSelector((state)=>state.reload.reload)
 
     const cancel = () => {
         setmodal(false)
@@ -54,6 +57,12 @@ const Subject = () => {
                 })
                 if(addsubject.status === 200){
                     console.log("Subject added successfully")
+                    if(rel) {
+                        dispatch(reload(false))
+                    }
+                    else {
+                        dispatch(reload(true))
+                    }
                 }
                 setmodal(false)
         }
