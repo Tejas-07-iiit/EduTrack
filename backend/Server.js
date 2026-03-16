@@ -58,6 +58,12 @@ app.use("/api" , require("./routes/logout"))
 // For fetch profile
 app.use("/api" , require("./routes/Profile"))
 
+// Send msg in contact page
+app.use("/api",require("./routes/Msg"))
+
+// NewsNewsletter emails 
+app.use("/api",require("./routes/News"))
+
 app.listen(process.env.PORT, ()=> {
   console.log("Your Server is running on port  : " , process.env.PORT)
 })

@@ -1128,6 +1128,11 @@ body {
   border-radius: 8px;
   font-weight: 700;
   cursor: pointer;
+  transition: 0.1s ease-in;
+}
+
+.newsletterBox button:active {
+  transform: scale(0.9);
 }
 
 .socialIcons {

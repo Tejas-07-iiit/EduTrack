@@ -1,6 +1,6 @@
-import './App.css';
-import './Main.css';
-import './Profile.css'
+import './styles/App.css';
+import './styles/Main.css';
+import './styles/Profile.css'
 import Register from './component/Register';
 import axios from 'axios';
 import { useEffect } from 'react';

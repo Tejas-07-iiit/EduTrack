@@ -8,13 +8,31 @@ import {
     faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import { faGlobe } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
+import axios from "axios"
 
 const Main = () => {
+
     const comp1 = useSelector((state) => state.comp.comp)
+    const [email,setemail] = useState()
+
     const dispatch = useDispatch()
 
     const gotosignin = () => {
         dispatch(comp("signin"))
+    }
+
+    const send = async (e) => {
+        try {
+            e.preventDefault()
+
+            const res = await axios.post("http://localhost:5000/api/news" , {
+                email:email
+            })
+            setemail("")
+        } catch (error) {
+            console.log("error in news",error.message)
+        }
     }
 
     return (
@@ -156,8 +174,10 @@ const Main = () => {
                                 <p className="newsletterDesc">Get updates and new features info.</p>
 
                                 <div className="newsletterBox">
-                                    <input type="email" placeholder="you@example.com" />
-                                    <button>Join</button>
+                                    <form onSubmit={send}>
+                                        <input type="email" onChange={(e)=>setemail(e.target.value)} value={email} placeholder="you@example.com" />
+                                        <button type="submit">Join</button> 
+                                    </form>
                                 </div>
 
                                 <div className="socialIcons">

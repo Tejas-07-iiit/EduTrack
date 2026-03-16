@@ -37,7 +37,7 @@ const Login = (props) => {
                 dispatch(comp("."))
             }
             else{   
-                console.log("Something Error ocurred in s   erver");
+                console.log("Something Error ocurred in server");
             }
             
         } catch (error) {  

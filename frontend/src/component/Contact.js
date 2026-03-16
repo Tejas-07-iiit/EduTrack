@@ -1,25 +1,55 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faUser } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import axios from 'axios';
+import Alert from './Alert';
 
 const Contact = () => {
 
     const comp = useSelector((state)=>state.comp.comp)
+    const [email , setemail] = useState()
+    const [msg , setmsg] = useState()
+    const [alert , setalert] = useState()
+
+    const send = async (e) => {
+        e.preventDefault();
+        try {
+            const res = await axios.post("http://localhost:5000/api/msg" , {
+                email : email,
+                Msg : msg
+            },{
+                withCredentials:true
+            })
+            setemail("")
+            setmsg("")
+            setalert(true)
+            setTimeout(()=> {
+                setalert(false)
+            },[1000])
+        } catch (error) {
+            console.log("something went wrong in the Contact  : ",error.message)
+        }
+    }
 
   return (
     <>{
         comp === "contact" && <div className="contactWrapper">
-            <form className="contactForm">
+
+            <form onSubmit={send} className="contactForm">
+
                 <h2>Get in Touch</h2>
+                {alert &&
+                <Alert message={"Message Received"}/>
+                }
                 <div className='citem'>
                     <label>Email address</label>
-                    <input type="email" placeholder="you@example.com"/>
+                    <input type="email" onChange={(e)=>setemail(e.target.value)} value={email} placeholder="you@example.com" required/>
                 </div>
                 <div className='citem'>
                     <label>Message</label>
-                    <textarea type="text" placeholder="Write your message..."/>
+                    <textarea type="text" onChange={(e)=> {setmsg(e.target.value)}} value={msg} placeholder="Write your message..." required/>
                 </div>
                 <button type="submit" className="submitBtn">Send Message</button>
             </form>
