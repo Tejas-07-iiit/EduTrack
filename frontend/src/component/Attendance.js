@@ -135,6 +135,7 @@ const Attendance = () => {
         else {
             dispatch(setEdit(ind))
     }
+    // eslint-disable-next-line
     },[ind])
 
     return (
