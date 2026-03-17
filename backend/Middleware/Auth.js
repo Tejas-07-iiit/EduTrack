@@ -5,8 +5,7 @@ const Auth = (req,res,next) => {
     const accesstoken = req.cookies.token;
     // console.log(accesstoken)
     if(!accesstoken) {
-        console.log("i am in auth middle")
-        return res.status(401).send("Unautharized");
+        return res.status(401).send("in auth Unautharized");
     }
   
     try {
