@@ -11,7 +11,7 @@ router.post("/prrofile" , Auth ,async (req,res)=> {
 
     } catch (error) {
         console.log("somethning went wrong : " , error.message)
-        res.status(401).json()
+        res.status(404).json()
     }
 })
 
