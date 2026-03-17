@@ -81,7 +81,7 @@ const Profile = () => {
               {path && !imageError ? (
                 <img src={path} onError={() => setImageError(true)} alt="profile" />
               ) : (
-                <FontAwesomeIcon icon={faCircleUser} />
+                <FontAwesomeIcon className='img12' icon={faCircleUser} />
               )}
             <input style={{display:'none'}} type="file" id='chsfile' onChange={(e) => { setImageError(false); dispatch(image1(e.target.files[0])); }} />
             <label for="chsfile" className='fileibtn'>Choose File</label>

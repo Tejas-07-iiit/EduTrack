@@ -109,6 +109,14 @@
   width: 200px;
 }
 
+.profileimage .img12 {
+  color: white;
+  border: 1px solid white;
+  border-radius: 117px;
+  height: 200px;
+  width: 200px;
+}
+
 .profilepage {
   display: flex;
 }
