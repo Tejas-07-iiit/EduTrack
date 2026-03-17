@@ -5,9 +5,6 @@ import { useDispatch, useSelector } from "react-redux"
 import { login } from "../Redux_store/Auth"
 import {comp} from "../Redux_store/Comp"    
 
-
-
-
 const Login = (props) => {
 
     const dispatch = useDispatch();
