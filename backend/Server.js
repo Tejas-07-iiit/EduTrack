@@ -3,9 +3,30 @@ const connect = require("./config/db")
 const app = express();
 const cors = require("cors");
 
-// Cross origin
+// Fix CORS - Allow multiple origins
+const allowedOrigins = [
+  "http://localhost:3000",
+  "http://localhost:3001",
+  "http://localhost:3002",
+  "http://localhost:3003",
+  "https://notebook-render.vercel.app"
+];
+
 app.use(cors({
-    origin: "http://localhost:3000", 
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true);
+
+    // allow main vercel domain + preview deployments
+    if (
+      allowedOrigins.includes(origin) ||
+      origin.endsWith(".vercel.app")
+    ) {
+      return callback(null, true);
+    }
+
+    console.log("CORS blocked origin:", origin);
+    return callback(new Error("Not allowed by CORS"), false);
+  },
   credentials: true
 }));
 
