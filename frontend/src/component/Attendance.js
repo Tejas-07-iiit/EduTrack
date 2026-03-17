@@ -1,5 +1,4 @@
 import axios from "axios";
-import comp from "../Redux_store/Comp";
 import {reload} from "../Redux_store/Reload"
 import {setEdit} from "../Redux_store/Attedit"
 import { useDispatch, useSelector } from "react-redux";
@@ -80,7 +79,7 @@ const Attendance = () => {
             setfdata(data);
             // console.log(data)
         }
-    }, [att]);
+    }, [att,subject]);
 
     // useEffect(()=>{
     //     if (rel) {
@@ -130,7 +129,7 @@ const Attendance = () => {
     };
 
     useEffect(()=> {
-        if(edit != -1) {
+        if(edit !== -1) {
             dispatch(setEdit(-1))
         }
         else {

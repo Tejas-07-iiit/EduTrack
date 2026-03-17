@@ -28,6 +28,7 @@ function App() {
       if(auth){
         dispatch(comp("profile"))
     }
+    // eslint-disable-next-line
     },[auth])
 
     useEffect(()=>{ 
@@ -53,7 +54,7 @@ function App() {
         }
       }      
       Refresh();
-
+// eslint-disable-next-line
     },[auth])
     
     return (
@@ -62,8 +63,10 @@ function App() {
         {!auth &&  <Main/>}
         
         {comp1 === "signin" && <Login/>}
+        
         <div className="mainbody">
-         {auth && <Side_pannel/> }
+         {// eslint-disable-next-line 
+         auth && <Side_pannel/> }
           {auth && <Subject/> }
           {auth && <Attendance/>}
           <Profile/>
