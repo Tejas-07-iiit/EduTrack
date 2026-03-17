@@ -32,6 +32,10 @@ app.use(cors({
 
 require("dotenv").config();
 
+app.get("/", (req, res) => {
+  res.send("Backend is running 🚀");
+});
+
 // Body Access
 app.use(express.json())
 
