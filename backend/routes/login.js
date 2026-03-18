@@ -27,8 +27,8 @@ router.post("/login" ,  async (req,res)=>{
         //    console.log(accessToken)
         res.cookie("token", accessToken, {
             httpOnly: true,
-            sameSite: "lax",
-            secure: false
+            secure: true,
+            sameSite: "none"
         });
         
         res.status(200).send(loginuser);
