@@ -5,15 +5,19 @@ const router = express.Router();
 // End Point -> Register
 router.post("/register", async (req,res) => {
     try {
-    
-            const newuser = new User({
-                f_name : req.body.f_name,
-                l_name : req.body.l_name,
-                email : req.body.email,
-                password : req.body.password
-            })
-            
-            await newuser.save()
+        const existingUser = await User.findOne({ email: req.body.email });
+        if (existingUser) {
+            return res.status(400).json({ message: "Email already in use" });
+        }
+
+        const newuser = new User({
+            f_name : req.body.f_name,
+            l_name : req.body.l_name,
+            email : req.body.email,
+            password : req.body.password
+        })
+        
+        await newuser.save()
             console.log("object")
 
             res.json({

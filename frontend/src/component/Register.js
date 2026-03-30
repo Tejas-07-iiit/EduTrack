@@ -52,10 +52,22 @@ const Register = () => {
                     email,
                     password,
                 })
+                setalert({ message: "Registration successful!", on: true });
+                setTimeout(() => {
+                    setalert({ message: "", on: false });
+                    dispatch(comp("signin"));
+                }, 1300);
             }
-
         } catch (error) {
-            console.log(error.message)
+            console.log(error.message);
+            if (error.response && error.response.status === 400) {
+                setalert({ message: error.response.data.message || "Email already in use", on: true });
+            } else {
+                setalert({ message: "Registration failed", on: true });
+            }
+            setTimeout(() => {
+                setalert({ message: "", on: false });
+            }, 1800);
         }
     }
 
