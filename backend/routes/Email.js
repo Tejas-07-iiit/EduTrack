@@ -15,7 +15,6 @@ router.post("/sendmail" , otp, async (req,res)=> {
             host: "smtp.gmail.com",
             port: 587,
             secure: false,
-            service: "gmail",
             auth: {
             user: process.env.EMAIL,
             pass: process.env.EMAIL_PASS // NOT your real password
