@@ -7,7 +7,7 @@ const nodemailer = require("nodemailer")
 const otp = require("../Middleware/Otp")
 
 
-router.post("/sendmail" , otp,(req,res)=> {
+router.post("/sendmail" , otp, async (req,res)=> {
     try {
         
         async function sendMail() {
@@ -23,7 +23,7 @@ router.post("/sendmail" , otp,(req,res)=> {
         });
 
         let info = await transporter.sendMail({
-            from: '"Edu Track" isd20t22@gmail.com>',
+            from: '"Edu Track" <isd20t22@gmail.com>',
             to: `${req.body.email}`,
             subject: "OTP-EduTrack",
             text: `EduTrack`,
@@ -33,7 +33,7 @@ router.post("/sendmail" , otp,(req,res)=> {
         console.log("Message sent:", info.messageId);
         }           
 
-        sendMail();
+        await sendMail();
 
         res.status(200).json({message : "email send"})
     } catch (error) {
