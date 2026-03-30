@@ -60,7 +60,7 @@ const Login = (props) => {
                 <form onSubmit={loginuser}>
                 {alert && <Alert message={"Invalid Credantials"}/>}
 
-                    <div className="form-item email">
+                    <div className="form-item ">
                         <label className="text">Email address</label>
                         <input onChange={(e) => {setemail(e.target.value)}} type="email"/>
                     </div>
