@@ -13,8 +13,8 @@ router.post("/sendmail" , otp, async (req,res)=> {
         async function sendMail() {
         let transporter = nodemailer.createTransport({
             host: "smtp.gmail.com",
-            port: 587,
-            secure: false,
+            port: 465,
+            secure: true,
             auth: {
             user: process.env.EMAIL,
             pass: process.env.EMAIL_PASS // NOT your real password
