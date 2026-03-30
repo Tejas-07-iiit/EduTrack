@@ -4,31 +4,33 @@ const app = express();
 const cors = require("cors");
 
 // Fix CORS - Allow multiple origins
+const cors = require("cors");
+
 const allowedOrigins = [
   "http://localhost:3000",
-  "http://localhost:3001",
-  "http://localhost:3002",
-  "http://localhost:3003",
   "https://edu-track-blush.vercel.app"
 ];
 
 app.use(cors({
   origin: function (origin, callback) {
-    console.log("Incoming origin:", origin);
-
+    // allow requests with no origin (like Postman)
     if (!origin) return callback(null, true);
 
-    if (
-      allowedOrigins.includes(origin) ||
-      origin.endsWith(".vercel.app")
-    ) {
-      return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
     }
-
-    return callback(new Error("Not allowed by CORS"));
   },
   credentials: true
 }));
+
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "https://edu-track-blush.vercel.app");
+  res.header("Access-Control-Allow-Credentials", "true");
+  next();
+});
+
 
 require("dotenv").config();
 
