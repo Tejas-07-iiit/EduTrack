@@ -5,11 +5,11 @@ const jwt = require("jsonwebtoken")
 const cookieParser = require("cookie-parser");
 router.use(cookieParser());
 const User = require("../models/user.model")
-
 // End Point -> Login
 router.post("/login" ,  async (req,res)=>{
     
     try {
+
         const loginuser = await User.findOne({email:req.body.email})
         // Access Token 
         

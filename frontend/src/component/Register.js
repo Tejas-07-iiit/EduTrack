@@ -11,17 +11,22 @@ const Register = () => {
     const [email, setemail] = useState();
     const [password, setpass] = useState();
     const [cpassword, setcpass] = useState();
+    const [otp , setotp] = useState();
+    const [verify , setverify] = useState(false);
 
     const comp1 = useSelector((state) => state.comp.comp)
     const dispatch = useDispatch()
 
-    const [alert, setalert] = useState(false)
+    const [alert, setalert] = useState({
+        message: "",
+        on : false
+    })
 
     const isrequired = () => {
-        if (!f_name || !l_name || !email || !password || !cpassword) {
-            setalert(true)
+        if (!f_name || !l_name || !email || !password || !cpassword || !otp) {
+            setalert({message : "All fields are required" , on : true})
             setTimeout(() => {
-                setalert(false)
+                setalert({message : "" , on : false})
             }, 1300);
             return false;
         }
@@ -32,6 +37,52 @@ const Register = () => {
         dispatch(comp("signin"))
     }
 
+    const sendotp = async () => {
+        try {
+            if(email) {
+
+                const vt = await axios.post(`${process.env.REACT_APP_API_URL}/sendmail` , {email})
+                if(vt.status=200) {
+                    setalert({message : "Otp Send" , on : true})
+                    setTimeout(() => {
+                        setalert({message : "" , on : false})
+                    }, 1300);
+                }
+            }
+            else {
+                setalert({message : "Please Enter Your mail correctly" , on : true})
+                    setTimeout(() => {
+                        setalert({message : "" , on : false})
+                    }, 1300);
+            }
+        } catch (error) {
+            console.log("otp not send")
+            console.log(error)
+        }
+    }
+
+    const verifyotp = async () => {
+        try {
+            if(otp){
+                const res = await axios.post(`${process.env.REACT_APP_API_URL}/emailverify` , {otp})
+                if(res.status === 200) {
+                    setverify(true)
+                    setalert({message : "Done" , on : true})
+                    setTimeout(() => {
+                        setalert({message : "" , on : false})
+                    }, 1300);
+                }
+            }
+            else {
+                setalert({message : "Try again" , on : true})
+                    setTimeout(() => {
+                        setalert({message : "" , on : false})
+                    }, 1300);
+            }
+        } catch (error) {
+            console.log("email not verified")
+        }
+    }
     const reset1 = () => {
 
         if (isrequired() && (password === cpassword)) {
@@ -67,7 +118,7 @@ const Register = () => {
                         <hr></hr>
 
                         <form id="regform" onSubmit={saveuser}>
-                            {alert && <Alert message={"All fields are required"} />}
+                            {alert.on && <Alert message={alert.message} />}
                             <div className="form-item Name">
                                 <label className="text">First Name</label>
                                 <input onChange={(e) => { setfname(e.target.value) }} type="fname" />
@@ -78,16 +129,29 @@ const Register = () => {
                                 <input onChange={(e) => { setlname(e.target.value) }} type="lname" />
                             </div>
 
-                            <div className="form-item email">
-                                <label className="text">Email address</label>
-                                <input onChange={(e) => { setemail(e.target.value) }} type="email" />
-                                <div style={{ fontSize: "14px", color: "rgb(171, 75, 75)" }}>We'll never share your email with anyone else.</div>
+                                <div className="">
+                                    <label className="text">Email address</label>
+                            <div style={{display:"flex"}} className="email">
+                                    <input onChange={(e) => { setemail(e.target.value) }} type="email" />
+                                    <button onClick={sendotp} className="embtn text"  type="button">Send Otp</button>
+                            </div>
+                                    <div style={{ fontSize: "14px", color: "rgb(171, 75, 75)" }}>We'll never share your email with anyone else.</div>
                             </div>
 
+
+
+                            <div className="form-item password">
+                                <label className="text">otp</label>
+                                <input onChange={(e) => { setotp(e.target.value) }} type="password" />
+                            </div>
+
+                            <button onClick={verifyotp} className="btn1 text" style={{background:"#000000"}} type="button">Verify Otp</button>
+                                                  
                             <div className="form-item password">
                                 <label className="text">Password</label>
                                 <input onChange={(e) => { setpass(e.target.value) }} type="password" />
                             </div>
+
 
                             <div className="form-item password">
                                 <label className="text">Confirm Password</label>
@@ -95,7 +159,7 @@ const Register = () => {
                                 {cpassword !== password && <p style={{ fontSize: "13px", color: "rgba(255, 0, 0, 0.57)" }}>password doesn't match</p>}
                             </div>
 
-                            <button onClick={reset1} className="btn1 text my-4" type="submit">Submit</button>
+                            {<button onClick={reset1} className="btn1 text my-4" disabled={!verify} type="submit">Submit</button>}
 
                             <div className="go_signup">
                                 <h6 style={{ fontSize: "13px", marginTop: "2px" }}>already have an account?</h6>
