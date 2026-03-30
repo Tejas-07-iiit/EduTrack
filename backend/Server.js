@@ -4,7 +4,7 @@ const app = express();
 const cors = require("cors");
 
 // Fix CORS - Allow multiple origins
-const cors = require("cors");
+// const cors = require("cors");
 
 const allowedOrigins = [
   "http://localhost:3000",
