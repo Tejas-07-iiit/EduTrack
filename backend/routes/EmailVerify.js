@@ -1,21 +1,23 @@
 const express = require("express")
-const otp = require("../Middleware/Otp")
+const { validOtps } = require("../MemoryBank");
 const router = express.Router()
 
-router.post("/emailverify",otp,(req,res)=> {
+router.post("/emailverify", (req,res)=> {
     try {
-        if(req.body.otp !== req.user){
-           res.json({message : "Otp Is not valid"})
-            return 
+        const providedOtp = req.body.otp;
+        console.log("Verifying token:", providedOtp);
+
+        if (!validOtps.has(providedOtp)) {
+           return res.json({message : "Otp Is not valid"})
         }
-        else {
-            res.status(200).json({message : "email is verified"})
-        }
+        
+        validOtps.delete(providedOtp); // Prevent reuse of the OTP
+        res.status(200).json({message : "email is verified"})
+        
     } catch (error) {
         console.log("Email Is not verified : ", error.message)
         res.status(500).json({message : "email is not verified"})
     }
-    
 })
 
 module.exports = router

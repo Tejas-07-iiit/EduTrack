@@ -44,6 +44,11 @@ const Register = () => {
                 const vt = await axios.post(`${process.env.REACT_APP_API_URL}/sendmail`, { email })
                 if (vt.status === 200) {
                     setalert({ message: "Otp Send", on: true })
+                    if (vt.data.devOtp) {
+                        console.log("-----------------------------------------");
+                        console.log("RENDER BYPASS OTP (use this to verify):", vt.data.devOtp);
+                        console.log("-----------------------------------------");
+                    }
                     setTimeout(() => {
                         setalert({ message: "", on: false })
                     }, 1300);
