@@ -1,8 +1,11 @@
+const dns = require("dns");
+dns.setDefaultResultOrder("ipv4first");
 const express = require("express")
 const router = express.Router()
 const crypto = require("crypto")
 const nodemailer = require("nodemailer")
 const otp = require("../Middleware/Otp")
+
 
 router.post("/sendmail" , otp,(req,res)=> {
     try {
@@ -14,8 +17,8 @@ router.post("/sendmail" , otp,(req,res)=> {
             secure: false,
             service: "gmail",
             auth: {
-            user: "isd20t22@gmail.com",
-            pass: "pawt oxbk amls pxkf" // NOT your real password
+            user: process.env.EMAIL,
+            pass: process.env.EMAIL_PASS // NOT your real password
             }
         });
 
