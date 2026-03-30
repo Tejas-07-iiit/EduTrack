@@ -42,7 +42,7 @@ const Register = () => {
             if(email) {
 
                 const vt = await axios.post(`${process.env.REACT_APP_API_URL}/sendmail` , {email})
-                if(vt.status=200) {
+                if(vt.status===200) {
                     setalert({message : "Otp Send" , on : true})
                     setTimeout(() => {
                         setalert({message : "" , on : false})
