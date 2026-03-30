@@ -11,22 +11,22 @@ const Register = () => {
     const [email, setemail] = useState();
     const [password, setpass] = useState();
     const [cpassword, setcpass] = useState();
-    const [otp , setotp] = useState();
-    const [verify , setverify] = useState(false);
+    const [otp, setotp] = useState();
+    const [verify, setverify] = useState(false);
 
     const comp1 = useSelector((state) => state.comp.comp)
     const dispatch = useDispatch()
 
     const [alert, setalert] = useState({
         message: "",
-        on : false
+        on: false
     })
 
     const isrequired = () => {
         if (!f_name || !l_name || !email || !password || !cpassword || !otp) {
-            setalert({message : "All fields are required" , on : true})
+            setalert({ message: "All fields are required", on: true })
             setTimeout(() => {
-                setalert({message : "" , on : false})
+                setalert({ message: "", on: false })
             }, 1300);
             return false;
         }
@@ -39,23 +39,27 @@ const Register = () => {
 
     const sendotp = async () => {
         try {
-            if(email) {
+            if (email) {
 
-                const vt = await axios.post(`${process.env.REACT_APP_API_URL}/sendmail` , {email})
-                if(vt.status===200) {
-                    setalert({message : "Otp Send" , on : true})
+                const vt = await axios.post(`${process.env.REACT_APP_API_URL}/sendmail`, { email })
+                if (vt.status === 200) {
+                    setalert({ message: "Otp Send", on: true })
                     setTimeout(() => {
-                        setalert({message : "" , on : false})
+                        setalert({ message: "", on: false })
                     }, 1300);
                 }
             }
             else {
-                setalert({message : "Please Enter Your mail correctly" , on : true})
-                    setTimeout(() => {
-                        setalert({message : "" , on : false})
-                    }, 1300);
+                setalert({ message: "Please Enter Your mail correctly", on: true })
+                setTimeout(() => {
+                    setalert({ message: "", on: false })
+                }, 1300);
             }
         } catch (error) {
+            setalert({message : "Failed to send OTP. Please try again." , on : true})
+            setTimeout(() => {
+                setalert({message : "" , on : false})
+            }, 3000);
             console.log("otp not send")
             console.log(error)
         }
@@ -63,21 +67,21 @@ const Register = () => {
 
     const verifyotp = async () => {
         try {
-            if(otp){
-                const res = await axios.post(`${process.env.REACT_APP_API_URL}/emailverify` , {otp})
-                if(res.status === 200) {
+            if (otp) {
+                const res = await axios.post(`${process.env.REACT_APP_API_URL}/emailverify`, { otp })
+                if (res.status === 200) {
                     setverify(true)
-                    setalert({message : "Done" , on : true})
+                    setalert({ message: "Done", on: true })
                     setTimeout(() => {
-                        setalert({message : "" , on : false})
+                        setalert({ message: "", on: false })
                     }, 1300);
                 }
             }
             else {
-                setalert({message : "Try again" , on : true})
-                    setTimeout(() => {
-                        setalert({message : "" , on : false})
-                    }, 1300);
+                setalert({ message: "Try again", on: true })
+                setTimeout(() => {
+                    setalert({ message: "", on: false })
+                }, 1300);
             }
         } catch (error) {
             console.log("email not verified")
@@ -129,13 +133,13 @@ const Register = () => {
                                 <input onChange={(e) => { setlname(e.target.value) }} type="lname" />
                             </div>
 
-                                <div className="">
-                                    <label className="text">Email address</label>
-                            <div style={{display:"flex"}} className="email">
+                            <div className="">
+                                <label className="text">Email address</label>
+                                <div style={{ display: "flex" }} className="email">
                                     <input onChange={(e) => { setemail(e.target.value) }} type="email" />
-                                    <button onClick={sendotp} className="embtn text"  type="button">Send Otp</button>
-                            </div>
-                                    <div style={{ fontSize: "14px", color: "rgb(171, 75, 75)" }}>We'll never share your email with anyone else.</div>
+                                    <button onClick={sendotp} className="embtn text" type="button">Send Otp</button>
+                                </div>
+                                <div style={{ fontSize: "14px", color: "rgb(171, 75, 75)" }}>We'll never share your email with anyone else.</div>
                             </div>
 
 
@@ -145,13 +149,12 @@ const Register = () => {
                                 <input onChange={(e) => { setotp(e.target.value) }} type="password" />
                             </div>
 
-                            <button onClick={verifyotp} className="btn1 text" style={{background:"#000000"}} type="button">Verify Otp</button>
-                                                  
+                            <button onClick={verifyotp} className="btn1 text" style={{ background: "#000000" }} type="button">Verify Otp</button>
+
                             <div className="form-item password">
                                 <label className="text">Password</label>
                                 <input onChange={(e) => { setpass(e.target.value) }} type="password" />
                             </div>
-
 
                             <div className="form-item password">
                                 <label className="text">Confirm Password</label>

@@ -8,28 +8,30 @@ const cors = require("cors");
 
 const allowedOrigins = [
   "http://localhost:3000",
-  "https://edu-track-blush.vercel.app"
+  "http://localhost:3001",
+  "http://localhost:3002",
+  "http://localhost:3003",
+  "https://edu-track-blush.vercel.app",
+  "https://edu-track-blush.vercel.app/"
 ];
 
 app.use(cors({
   origin: function (origin, callback) {
-    // allow requests with no origin (like Postman)
     if (!origin) return callback(null, true);
 
-    if (allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
+    if (
+      allowedOrigins.includes(origin) ||
+      origin.endsWith(".vercel.app") ||
+      origin.endsWith(".vercel.app/")
+    ) {
+      return callback(null, true);
     }
+
+    console.log("CORS blocked origin:", origin);
+    return callback(new Error("Not allowed by CORS"), false);
   },
   credentials: true
 }));
-
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "https://edu-track-blush.vercel.app");
-  res.header("Access-Control-Allow-Credentials", "true");
-  next();
-});
 
 
 require("dotenv").config();
