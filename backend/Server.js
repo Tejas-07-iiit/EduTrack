@@ -89,6 +89,12 @@ app.use("/api",require("./routes/Msg"))
 // NewsNewsletter emails 
 app.use("/api",require("./routes/News"))
 
+// send mail
+app.use("/api",require("./routes/Email"))
+
+// verify email
+app.use("/api" ,require("./routes/EmailVerify"))
+
 app.listen(process.env.PORT, ()=> {
   console.log("Your Server is running on port  : " , process.env.PORT)
 })
