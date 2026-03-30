@@ -9,14 +9,15 @@ const allowedOrigins = [
   "http://localhost:3001",
   "http://localhost:3002",
   "http://localhost:3003",
-  "https://edu-track-blush.vercel.app/"
+  "https://edu-track-blush.vercel.app"
 ];
 
 app.use(cors({
   origin: function (origin, callback) {
+    console.log("Incoming origin:", origin);
+
     if (!origin) return callback(null, true);
 
-    // allow main vercel domain + preview deployments
     if (
       allowedOrigins.includes(origin) ||
       origin.endsWith(".vercel.app")
@@ -24,8 +25,7 @@ app.use(cors({
       return callback(null, true);
     }
 
-    console.log("CORS blocked origin:", origin);
-    return callback(new Error("Not allowed by CORS"), false);
+    return callback(new Error("Not allowed by CORS"));
   },
   credentials: true
 }));
